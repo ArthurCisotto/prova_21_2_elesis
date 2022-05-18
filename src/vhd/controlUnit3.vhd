@@ -29,5 +29,8 @@ begin
   -- não precisa implementar os demais
   --=================================--
 
+  muxALUI <= '0' when instruction(17 downto 16) = "10" else '1';
+  loadA <= (not(instruction(17)) and not(instruction(16))) or (instruction(17) and instruction(16)) or (instruction(17) and not(instruction(16)) and instruction(3));
+  loadD <= (not(instruction(17)) and instruction(16)) or (instruction(17) and instruction(16)) or (instruction(17) and not(instruction(16)) and instruction(4));
 
 end architecture;
